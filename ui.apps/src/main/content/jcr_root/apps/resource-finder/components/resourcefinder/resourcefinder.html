@@ -1,0 +1,22 @@
+<div data-sly-use.model="com.jikmunn.aem.core.models.ResourceFinderModel"
+     class="resource-finder">
+
+    <sly data-sly-test="${model.hasError}">
+        <p class="resource-finder__error" data-sly-test="${wcmmode.edit}">
+            Resource Finder: check the searchPath dialog field, or see the
+            error log for details.
+        </p>
+    </sly>
+
+    <sly data-sly-test="${!model.hasError && model.empty}">
+        <p class="resource-finder__empty">No resources found.</p>
+    </sly>
+
+    <ul class="resource-finder__list" data-sly-list.item="${model.items}">
+        <li class="resource-finder__item">
+            <a href="${item.path}.html" class="resource-finder__title">${item.title}</a>
+            <p class="resource-finder__description" data-sly-test="${item.description}">${item.description}</p>
+        </li>
+    </ul>
+
+</div>
